@@ -23,10 +23,17 @@ public class ReusableMethods {
         Thread.sleep(400);
     }
 
-    public static void scrollPage(int x, int y, int z , int duration){
+    public static void scrollPageVertical(int x, int y, int z , int duration){
         touchAction.press(PointOption.point(x , y))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(duration)))
                 .moveTo(PointOption.point(x , z))
+                .release()
+                .perform();
+    }
+    public static void scrollPageHorizantal(int x, int y, int z , int duration){
+        touchAction.press(PointOption.point(x , y))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(duration)))
+                .moveTo(PointOption.point(z , y))
                 .release()
                 .perform();
     }
