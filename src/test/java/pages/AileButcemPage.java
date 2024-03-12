@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 import java.time.Duration;
 
@@ -17,4 +18,5 @@ public class AileButcemPage {
 
     @FindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
     public MobileElement passwordBox;
+
 }

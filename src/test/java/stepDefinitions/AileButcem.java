@@ -1,19 +1,24 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Given;
+import pages.AileButcemPage;
+import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
 public class AileButcem {
-    @Given("Set up the initial screen settings and then access the login page.")
-    public void set_up_the_initial_screen_settings_and_then_access_the_login_page() throws InterruptedException {
+    AileButcemPage aileButcemPage = new AileButcemPage();
+    @Given("Set up the initial screen settings {int} {int} {int} {int} {int} {int} and then access the login {string} page.")
+    public void set_up_the_initial_screen_settings_and_then_access_the_login_page(int for1, int for2, int x, int y, int z, int duration, String text) throws InterruptedException {
         ReusableMethods.wait(3);
-        for (int i = 0; i < 6; i++) {
-            ReusableMethods.scrollPageHorizantal(900 , 1000 , 200 , 500);
+        for (int i = for1; i < for2; i++) {
+            ReusableMethods.scrollPageHorizantal(x , y , z , duration);
         }
+        ReusableMethods.scrollWithUiScrollable(text);
     }
-    @Given("Log in with user credentials by entering email and password information.")
-    public void log_in_with_user_credentials_by_entering_email_and_password_information() {
-
+    @Given("Log in with user credentials by entering {string} and {string} information.")
+    public void log_in_with_user_credentials_by_entering_email_and_password_information(String email , String password) {
+        aileButcemPage.emailBox.sendKeys(ConfigReader.getProperty(email));
+        aileButcemPage.passwordBox.sendKeys(ConfigReader.getProperty(password));
     }
     @Given("Confirm that the login to the application is successful with user credentials.")
     public void confirm_that_the_login_to_the_application_is_successful_with_user_credentials() {
